@@ -122,3 +122,10 @@ function initTaskBoard() {
 
 // Wait until DOM is fully loaded
 document.addEventListener("DOMContentLoaded", initTaskBoard);
+
+//local storage test concept
+let tasks = ["todo", "doing", "done"];
+localStorage.setItem("tasks", JSON.stringify(tasks));
+
+let saved = JSON.parse(localStorage.getItem("tasks"));
+console.log(saved); // ["todo", "doing", "done"]
