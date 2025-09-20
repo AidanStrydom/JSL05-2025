@@ -47,13 +47,39 @@ function clearExistingTasks() {
  */
 function renderTasks(tasks) {
   tasks.forEach((task) => {
-    const container = getTaskContainerByStatus(task.status);
-    if (container) {
-      const taskElement = createTaskElement(task);
-      container.appendChild(taskElement);
-    }
+    renderTask(task);
   });
 }
+
+function renderTask(task) {
+  const container = getTaskContainerByStatus(task.status);
+  if (container) {
+    const taskElement = createTaskElement(task);
+    container.appendChild(taskElement);
+  }
+}
+
+function addTaskFromModal() {
+  const title = document.getElementById("task-title").value.trim();
+  const description = document.getElementById("task-desc").value.trim();
+  const status = document.getElementById("task-status").value;
+
+  if (!title) {
+    alert("Task must have a title!");
+    return;
+  }
+
+  const newTask = {
+    id: Date.now(),   // unique ID (doesnt seem right to me)
+    title,
+    description,
+    status
+  };
+
+  tasks.push(newTask);
+  console.log("Tasks:", tasks); // ✅ see updated array in console
+}
+// Call function?
 
 /**
  * Opens the modal dialog with pre-filled task details.
@@ -91,6 +117,7 @@ function initTaskBoard() {
   clearExistingTasks();
   renderTasks(initialTasks);
   setupModalCloseHandler();
+  addTaskFromModal();
 }
 
 // Wait until DOM is fully loaded
