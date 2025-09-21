@@ -318,6 +318,7 @@ dialog {
   border: none;
   border-radius: 24px; /* Pill shape */
   height: 40px;
+  width: 100%;
   padding: 10px 16px;
   font-size: 0.9375rem;
   font-weight: bold;
