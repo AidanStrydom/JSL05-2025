@@ -60,26 +60,25 @@ function renderTask(task) {
 }
 
 function addTaskFromModal() {
-  const title = document.getElementById("task-title").value.trim();
-  const description = document.getElementById("task-desc").value.trim();
-  const status = document.getElementById("task-status").value;
+  const title = document.getElementById("add-task-title").value.trim();
+  const description = document.getElementById("add-task-desc").value.trim();
+  const status = document.getElementById("add-task-status").value;
 
-  if (!title) {
-    alert("Task must have a title!");
-    return;
-  }
+  var tasks = JSON.parse(localStorage.getItem("tasks"));
 
   const newTask = {
-    id: Date.now(),   // unique ID (doesnt seem right to me)
-    title,
-    description,
-    status
+    id: 20,   // unique ID (doesnt seem right to me)
+    title: title,
+    description: description,
+    status: status,
+    board: "Launch Career"
   };
 
   tasks.push(newTask);
-  console.log("Tasks:", tasks); // ✅ see updated array in console
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  console.log("Tasks:", newTask); // ✅ see updated array in console
 }
-// Call function?
+
 
 /**
  * Opens the modal dialog with pre-filled task details.
@@ -109,7 +108,7 @@ function openAddModal() {
 
   titleInput.value = "";
   descInput.value = "";
-  statusSelect.value = "";
+  statusSelect.value = "todo";
 
   modal.showModal();
 }
@@ -137,17 +136,26 @@ function setupButtonsHandler() {
   addTaskBtn.addEventListener("click", () => {
     openAddModal();
   });
+
+  /*add submit button*/
+  const submitBtn = document.getElementById("submit-btn");
+  submitBtn.addEventListener("click", () => {
+    addTaskFromModal();
+  });
 }
 
 /**
  * Initializes the task board and modal handlers.
  */
 function initTaskBoard() {
-  clearExistingTasks();
-  renderTasks(initialTasks);
+  clearExistingTasks(); 
+  var tasks = JSON.parse(localStorage.getItem("tasks"));
+  if (tasks === null) {
+    localStorage.setItem("tasks", JSON.stringify(initialTasks));
+    tasks = initialTasks; 
+  }
+  renderTasks(tasks);
   setupButtonsHandler();
-
-  
 }
 
 // Wait until DOM is fully loaded
