@@ -1,31 +1,19 @@
 # JSL05 Project Brief: Task Board with Local Storage Persistence and Task Creation
 
-## Prerequisite
-
-1. Before starting this challenge, ensure that you have **correctly populated your DOM elements** as per the solution in JSL04. Additionally, ensure that clicking a task should **open the modal with the relevant task details** as required in the previous challenge.
-2. **Check the project user stories in your student dashboard**, make sure you understand what is required for each feature.
-
 ## Overview
 
-In this project, you will implement a task management system where **tasks are persisted in local storage**, ensuring that tasks remain available even after refreshing the page or reopening the application. Users will be able to **add new tasks**, with the task details being **stored in local storage** and displayed in the appropriate **columns** ("To Do", "Doing", "Done"). The application should also include an **Add Task** modal for creating new tasks.
+In this task multiple technologies have been used, and new elemets and functionality have been added to the previos Khanban board made for JSL04. 
+HTML, with empty divs poppulated by array data in itiial scripts are present. There are also two dialog modal boxes whcih are "hidden" elements.
+CSS is used for styling, as well as media queries for responsive changes depending on screen sizes.
+JavaScript is used for interactivity. There is one script for array data called initialData. The other, scripts, is for functionalk code that completes tasks.
+Functions are created to perform specific tasks, such as rendering data on the browser. There are also functions for on click events to bring up the modals. Data is  stored in local storage and is avaialable on page refresh. 
 
 ## Key Objectives
 
-### Persistent Task Storage & Retrieval
+Clean and maintanable code.
+Responsive design that adapts based on screen size.
+JavaScript functionality
 
-- **Save tasks to local storage**: On page load, the application should **load tasks** from local storage so that the latest task list is available, even after a refresh.
-- Ensure that **tasks are saved in local storage** every time a new task is added so that tasks persist after the page refreshes.
-- **Load tasks** from local storage on startup, so users can see the latest tasks without manually re-entering them.
-- Tasks should be categorized correctly into their respective columns (e.g., "To Do", "Doing", "Done") based on their **status** when loaded from local storage.
-
-### Task Creation & Modal Interaction
-
-- Provide an **"Add Task" button** that, when clicked, opens a **modal** for creating a new task.
-- The modal should include:
-  - Fields for entering the **task title** and **description**.
-  - A dropdown to select the task **status** ("To Do", "Doing", "Done").
-  - A **submit button** to add the new task to the task board immediately.
-- After submitting, the task should appear on the board without requiring a page refresh.
 
 ## Design & Responsiveness
 
