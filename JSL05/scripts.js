@@ -99,14 +99,43 @@ function openTaskModal(task) {
 }
 
 /**
+ * Opens the modal dialog with empty task fields.
+ */
+function openAddModal() {
+  const modal = document.getElementById("add-task-modal");
+  const titleInput = document.getElementById("add-task-title");
+  const descInput = document.getElementById("add-task-desc");
+  const statusSelect = document.getElementById("add-task-status");
+
+  titleInput.value = "";
+  descInput.value = "";
+  statusSelect.value = "";
+
+  modal.showModal();
+}
+
+/**
  * Sets up modal close behavior.
  */
-function setupModalCloseHandler() {
+function setupButtonsHandler() {
+  /*edit modal close*/
   const modal = document.getElementById("task-modal");
   const closeBtn = document.getElementById("close-modal-btn");
-
   closeBtn.addEventListener("click", () => {
     modal.close();
+  });
+
+  /*add modal close*/
+  const addModal = document.getElementById("add-task-modal");
+  const addCloseBtn = document.getElementById("add-close-modal-btn");
+  addCloseBtn.addEventListener("click", () => {
+    addModal.close();
+  });
+
+  /*add modal open*/
+  const addTaskBtn = document.getElementById("add-new-task-btn");
+  addTaskBtn.addEventListener("click", () => {
+    openAddModal();
   });
 }
 
@@ -116,16 +145,12 @@ function setupModalCloseHandler() {
 function initTaskBoard() {
   clearExistingTasks();
   renderTasks(initialTasks);
-  setupModalCloseHandler();
-  addTaskFromModal();
+  setupButtonsHandler();
+
+  
 }
 
 // Wait until DOM is fully loaded
 document.addEventListener("DOMContentLoaded", initTaskBoard);
 
-//local storage test concept
-let tasks = ["todo", "doing", "done"];
-localStorage.setItem("tasks", JSON.stringify(tasks));
 
-let saved = JSON.parse(localStorage.getItem("tasks"));
-console.log(saved); // ["todo", "doing", "done"]

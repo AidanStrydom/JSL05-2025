@@ -247,7 +247,26 @@ dialog {
   background: rgba(0, 0, 0, 0.3);
 }
 
+#add-task-modal::backdrop {
+  background: rgba(0, 0, 0, 0.3);
+}
+
 #task-modal {
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  padding: 24px;
+  background-color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  /*font-family: "Plus Jakarta Sans", sans-serif;*/
+}
+
+/* Style the add modal box */
+
+#add-task-modal {
   top: 40%;
   left: 50%;
   transform: translate(-50%, -40%);
@@ -291,6 +310,19 @@ dialog {
 
 .close-btn:focus {
   outline: none;
+}
+
+.submit-btn {
+  background-color: #635fc7;
+  color: #fff;
+  border: none;
+  border-radius: 24px; /* Pill shape */
+  height: 40px;
+  padding: 10px 16px;
+  font-size: 0.9375rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
 }
 
 /* Form elements */
