@@ -67,7 +67,7 @@ function addTaskFromModal() {
   var tasks = JSON.parse(localStorage.getItem("tasks"));
 
   const newTask = {
-    id: 13 + i,   // unique ID (doesnt seem right to me)
+    id: 20,   // unique ID (doesnt seem right to me)
     title: title,
     description: description,
     status: status,
